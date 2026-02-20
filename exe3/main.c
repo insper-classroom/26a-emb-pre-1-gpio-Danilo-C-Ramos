@@ -27,10 +27,13 @@ int main() {
   while (true) {
     if (!gpio_get(btn_verde)) {
       gpio_put(led_verde, 1);
-    } else if (!gpio_get(btn_vermelho)) {
-      gpio_put(led_vermelho, 1);
     } else {
       gpio_put(led_verde, 0);
+    }
+
+    if (!gpio_get(btn_vermelho)) {
+      gpio_put(led_vermelho, 1);
+    } else {
       gpio_put(led_vermelho, 0);
     }
   }
