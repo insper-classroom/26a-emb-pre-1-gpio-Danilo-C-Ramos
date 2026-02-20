@@ -24,20 +24,29 @@ int main() {
   gpio_init(led_vermelho);
   gpio_set_dir(led_vermelho, GPIO_OUT);
   
-  while (true) {
-    if (gpio_get(btn_verde)) {
-      gpio_put(led_verde, 1);
-    } else {
-      gpio_put(led_verde, 0);
-    }
+  bool led_g_state = false;
+  bool led_r_state = false;
 
-    if (gpio_get(btn_vermelho)) {
-      gpio_put(led_vermelho, 1);
-    } else {
-      gpio_put(led_vermelho, 0);
+  bool btn_g_prev = true;
+  bool btn_r_prev = true;
+
+  while (true) {
+    bool btn_g_curr = gpio_get(btn_verde);
+    bool btn_r_curr = gpio_get(btn_vermelho);
+
+    if (btn_g_prev && !btn_g_curr) {
+      led_g_state = !led_g_state;
+      gpio_put(led_verde, led_g_state);
     }
+    btn_g_prev = btn_g_curr;
+
+    if (btn_r_prev && !btn_r_curr) {
+      led_r_state = !led_r_state;           
+      gpio_put(led_vermelho, led_r_state);  
+    }
+    btn_r_prev = btn_r_curr;
     
-    sleep_ms(10); 
+    sleep_ms(10);
   }
 }
 
