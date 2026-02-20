@@ -18,14 +18,35 @@ int main() {
     int cnt_1 = 0;
     int cnt_2 = 0;
 
+    bool btn_1_pressed = false;
+    bool btn_2_pressed = false;
+    bool btn_1_prev = false;
+    bool btn_2_prev = false;
+
     while (true) {
 
-        if (!gpio_get(BTN_PIN)) {
-            printf("Botao 1: %d\n", cnt_1++);
+        btn_1_pressed = !gpio_get(BTN_PIN);
+
+        if (btn_1_pressed && !btn_1_prev) {
+            sleep_ms(500);
+            if (btn_1_pressed){
+                printf("Botao 1: %d\n", cnt_1++);
+            }
+            btn_1_prev = btn_1_pressed;    
+        } else if(!btn_1_pressed) {
+            btn_1_prev = btn_1_pressed;
         }
 
-        if (!gpio_get(BTN_PIN_2)) {
-            printf("Botao 2: %d\n", cnt_2++);
+        btn_2_pressed = !gpio_get(BTN_PIN_2);
+
+        if (btn_2_pressed && !btn_2_prev) {
+            sleep_ms(500);
+            if (btn_2_pressed){
+                printf("Botao 2: %d\n", cnt_2++);
+            }
+            btn_2_prev = btn_2_pressed;    
+        } else if(!btn_2_pressed) {
+            btn_2_prev = btn_2_pressed;
         }
     }
 }
