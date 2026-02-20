@@ -9,12 +9,13 @@ int multiplyNumbers(int x, int y) {
 }
 
 int main(void) {
-    int a, b = 5; //uninitvar, legacyUninitvar
+    int a = 3, b = 5; //uninitvar, legacyUninitvar
     int result = multiplyNumbers(a, b);
+    printf("result: %d\n", result);
 
     int arr[NUM_ELEMENTS];
     for(int i = 0; i < NUM_ELEMENTS; i++) { //arrayIndexOutOfBounds
-        arr[i] = i;
+        printf("arr[%d] = %d\n", i, arr[i]);
     }
 
     return 0;

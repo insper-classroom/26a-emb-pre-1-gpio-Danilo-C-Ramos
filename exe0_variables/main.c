@@ -1,6 +1,5 @@
 #include "stdio.h"
 
-
 void foo(int *p) {
     *p = *p + 1;
 }
@@ -8,10 +7,12 @@ void foo(int *p) {
 void main(void) {
     while (1) {
         int a = 6, b = 0;
-        foo(a);
+        foo(&a);
         
         if (a > 5) {
             b = 1;
         }
+        printf("a: %d | b: %d\n", a, b);
     }
+    return 0;
 }
