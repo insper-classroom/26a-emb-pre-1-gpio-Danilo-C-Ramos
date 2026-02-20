@@ -36,5 +36,8 @@ int main() {
     } else {
       gpio_put(led_vermelho, 0);
     }
+    
+    sleep_ms(10); 
   }
 }
+

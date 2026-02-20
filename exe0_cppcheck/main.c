@@ -14,7 +14,8 @@ int main(void) {
     printf("result: %d\n", result);
 
     int arr[NUM_ELEMENTS];
-    for(int i = 0; i < NUM_ELEMENTS; i++) { //arrayIndexOutOfBounds
+    for(int i = 0; i < NUM_ELEMENTS; i++) {
+        arr[i] = i;
         printf("arr[%d] = %d\n", i, arr[i]);
     }
 
