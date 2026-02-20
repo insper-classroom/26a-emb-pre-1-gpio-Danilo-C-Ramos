@@ -25,13 +25,13 @@ int main() {
   gpio_set_dir(led_vermelho, GPIO_OUT);
   
   while (true) {
-    if (!gpio_get(btn_verde)) {
+    if (gpio_get(btn_verde)) {
       gpio_put(led_verde, 1);
     } else {
       gpio_put(led_verde, 0);
     }
 
-    if (!gpio_get(btn_vermelho)) {
+    if (gpio_get(btn_vermelho)) {
       gpio_put(led_vermelho, 1);
     } else {
       gpio_put(led_vermelho, 0);
